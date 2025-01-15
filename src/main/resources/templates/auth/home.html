@@ -11,7 +11,7 @@
             background-position: center;
             background-repeat: no-repeat;
             padding: 0;
-            min-height: 100vh;
+            min-height: 105vh;
             margin-left: 8%;
         }
         h1 {
@@ -36,13 +36,16 @@
             font-weight: bold;
             text-decoration: none;
             transition: color 0.3s ease;
+            margin-left: -2.2%;
         }
-        a:hover {
-            color: #A0522D;
-        }
+
+        /*a:hover {*/
+        /*    color: #A0522D;*/
+        /*}*/
 
         .button-container {
             margin-top: 20px;
+            transform: translateX(-3%);
         }
 
         .button {
@@ -50,8 +53,8 @@
             margin: 10px;
             padding: 15px 30px;
             font-size: 1em;
-            color: #fff;
-            background-color: #866237;
+            color: #493729;
+            background-color: #a39664;
             border: none;
             border-radius: 5px;
             text-decoration: none;
@@ -69,9 +72,7 @@
 </head>
 <body>
 
-<h1>Parcel Patronus </h1>
-<p>Your Trusted Partner in Parcel Delivery</p>
-<br/> <br/> <br/> <br/> <br/>
+<br/> <br/> <br/> <br/> <br/> <br/>
 
 <div th:if="${role.contains('ROLE_USER')}" class="button-container">
     <a href="/orderPlacement/newParcel" class="button">PLACE NEW ORDER</a>
@@ -89,7 +90,7 @@
 
     <a href="/processing" class="button">ASSIGN TASKS FOR TODAY</a>
     <br/>
-    <a href="/processing/showIndividualTasks" class="button" style="color:darkcyan">SHOW MY TASKS</a>
+    <a href="/processing/showIndividualTasks" class="button" style="color:#7e5645">SHOW MY TASKS</a>
     <br/>
     <br/>
     <br/>
@@ -106,9 +107,9 @@
 
 
 
-<a href="/">Main page</a>
+<a style="color:white" href="/">Main page</a>
 <br/><br/>
-<a href="/logout">Exit</a>
+<a style="color:white" href="/logout">Exit</a>
 
 
 </body>

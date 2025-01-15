@@ -33,11 +33,6 @@ public class DeliveryDetailsService {
 
     @Transactional
     public List<DeliveryDetails> findAll(){
-
-        for(DeliveryDetails d: deliveryDetailsRepository.findAll()){
-            d.setStatus(Status.AWAITING_PICKUP);
-            d.setCourier(null);
-        }
         return deliveryDetailsRepository.findAll();
     }
 
