@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Individual tasks</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('/landing_page.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 0;
+            min-height: 100vh;
+            margin-left: 3%;
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: normal;
+            color: #680001;
+            text-align: left;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            margin-top: 1%;
+
+        }
+        p {
+            color: #988e99;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+        }
+
+        a {
+            color: #3c1e08;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #A0522D;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<p>INDIVIDUAL TASKS</p>
+<p th:text="'Courier ID: ' + ${user.getEmployee().getId()} + ', name: ' + ${user.getEmployee().getFullName()}"></p>
+<br/>
+<br/>
+<br/>
+
+<div th:if="${user.getEmployee().getPosition().contains('COURIER')}">
+<p style="color: darkolivegreen"> 1. COLLECT FROM DISPATCH MACHINE </p>
+<br/>
+<div th:each="t: ${tasks_ASSIGNED_TO_COURIER_TO_PICKUP}">
+    <a th:href="@{/deliveryDetails/{id}(id=${t.getId()})}" style="color:darkred" th:text="'Delivery ID: ' + ${t.getId()}">value</a>
+
+    <form action="/processing/changeStatus" method="POST">
+        <input type="hidden" th:name="delivery_id" th:value="${t.getId()}"/>
+        <input type="hidden" th:name="delivery_status" th:value="${t.getStatus()}"/>
+        <button type="submit">COLLECT FROM DISPATCH MACHINE</button>
+    </form>
+    <a style="font-weight: normal" th:text="'Dispatch machine ID: ' + ${t.getDispatchParcelMachine().getId()}"/>
+    <br/>
+    <a style="font-weight: normal" th:text="'Address: ' + ${t.getDispatchParcelMachine().getAddress()}"/>
+    <br/>
+    <a style="font-weight: normal" th:text="'Cell number: '"/>
+    <a style="color: #680001" th:text="${t.getCellIdDispatch()}"/>
+    <br/>
+    <br/>
+</div>
+    <br/>
+    <br/>
+
+    <p style="color: darkolivegreen"> 2. DELIVER TO THE SORTING POINT </p>
+    <br/>
+    <div th:each="t: ${tasks_IN_TRANSIT_TO_SORTING_POINT}">
+        <a th:href="@{/deliveryDetails/{id}(id=${t.getId()})}" style="color:darkred" th:text="'Delivery ID: ' + ${t.getId()}">value</a>
+        <form action="/processing/changeStatus" method="POST">
+            <input type="hidden" th:name="delivery_id" th:value="${t.getId()}"/>
+            <input type="hidden" th:name="delivery_status" th:value="${t.getStatus()}"/>
+            <button type="submit">UNLOAD AT THE SORTING POINT</button>
+        </form>
+        <a style="font-weight: normal" th:text="'Destination machine ID: ' + ${t.getDestinationParcelMachine().getId()}"/>
+        <br/>
+        <a style="font-weight: normal" th:text="'Address: ' + ${t.getDestinationParcelMachine().getAddress()}"/>
+                <br/>
+        <br/>
+    </div>
+
+            <p style="color: darkolivegreen" > 3. COLLECT PARCELS FROM THE SORTING POINT </p>
+            <br/>
+            <div th:each="t: ${tasks_ASSIGNED_TO_COURIER_TO_DELIVER}">
+                <a th:href="@{/deliveryDetails/{id}(id=${t.getId()})}" style="color:darkred" th:text="'Delivery ID: ' + ${t.getId()}">value</a>
+                <br/>
+                <form action="/processing/changeStatus" method="POST">
+                    <input type="hidden" th:name="delivery_id" th:value="${t.getId()}"/>
+                    <input type="hidden" th:name="delivery_status" th:value="${t.getStatus()}"/>
+                    <button type="submit">COLLECT FROM SORTING POINT</button>
+                </form>
+                <a style="font-weight: normal" th:text="'Destination machine ID: ' + ${t.getDestinationParcelMachine().getId()}"/>
+                <br/>
+                <a style="font-weight: normal" th:text="'Address: ' + ${t.getDestinationParcelMachine().getAddress()}"/>
+                <br/>
+                <br/>
+            </div>
+<br/>
+                <p style="color: darkolivegreen" > 4. UNLOAD AT THE DESTINATION PARCEL MACHINE </p>
+                <br/>
+                <div th:each="t: ${tasks_IN_TRANSIT_TO_DESTINATION}">
+                    <a th:href="@{/deliveryDetails/{id}(id=${t.getId()})}" style="color:darkred" th:text="'Delivery ID: ' + ${t.getId()}">value</a>
+                    <br/>
+                    <form action="/processing/changeStatus" method="POST">
+                        <input type="hidden" th:name="delivery_id" th:value="${t.getId()}"/>
+                        <input type="hidden" th:name="delivery_status" th:value="${t.getStatus()}"/>
+                        <button type="submit">PLACE IN DESTINATION MACHINE</button>
+                    </form>
+                    <a style="font-weight: normal" th:text="'Destination machine ID: ' + ${t.getDestinationParcelMachine().getId()}"/>
+                    <br/>
+                    <a style="font-weight: normal" th:text="'Address: ' + ${t.getDestinationParcelMachine().getAddress()}"/>
+                    <br/>
+                    <a style="font-weight: normal" th:text="'Cell number: '"/>
+                    <a style="color: #680001" th:text="${t.getCellIdDestination()}"/>
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+</div>
+
+<div th:if="${user.getEmployee().getPosition().contains('WAREHOUSE_MANAGER')}">
+<p style="color: darkolivegreen" > 1. ACCEPT PARCEL FROM COURIER </p>
+<br/>
+<div th:each="t: ${tasks_UNLOADED_AT_SORTING_POINT}">
+    <a th:href="@{/deliveryDetails/{id}(id=${t.getId()})}" style="color:darkred" th:text="'Delivery ID: ' + ${t.getId()}">value</a>
+    <br/>
+    <form action="/processing/changeStatus" method="POST">
+        <input type="hidden" th:name="delivery_id" th:value="${t.getId()}"/>
+        <input type="hidden" th:name="delivery_status" th:value="${t.getStatus()}"/>
+        <button type="submit">ACCEPT PARCEL</button>
+    </form>
+    <a style="font-weight: normal" th:text="'Dispatch machine ID: ' + ${t.getDispatchParcelMachine().getId()} + ', address: ' + ${t.getDispatchParcelMachine().getAddress()}"/>
+    <br/>
+    <a th:text="'Destination machine ID: ' + ${t.getDestinationParcelMachine().getId()} + ', address: ' + ${t.getDestinationParcelMachine().getAddress()}"/>
+    <br/>
+    <br/>
+</div>
+
+
+
+</div>
+
+<br/>
+<br/>
+<br/>
+
+
+<a href="/">Main page</a>
+<br/><br/>
+<a href="/logout">Exit</a>
+
+</body>
+</html>

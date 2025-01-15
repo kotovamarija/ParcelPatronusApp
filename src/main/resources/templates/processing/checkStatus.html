@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delivery Status Updates</title>
+    <style>
+        body {
+            background-image: url('/landing_page.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 0;
+            min-height: 100vh;
+            margin-left: 8%;
+        }
+        h1 {
+            font-family: 'Georgia', serif;
+            font-size: 1.8em;
+            font-weight: normal;
+            color: #680001;
+            text-align: left;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            margin-top: 1%;
+
+        }
+        p {
+            font-family: 'Georgia', serif;
+            color: #988e99;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+        }
+
+        a {
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #A0522D;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Parcel Patronus </h1>
+<p>Your Trusted Partner in Parcel Delivery</p>
+<br/> <br/> <br/> <br/> <br/>
+
+
+
+
+<a th:text="'Sender: ' + ${delivery.getParcel().getSender().getFullName()}">value</a>
+<br/>
+<a th:text="'Recipient: ' + ${delivery.getRecipient()}">value</a>
+<br/>
+<br/>
+<a style="font-weight: bold; color:#680001" th:text="'Current status: ' + ${delivery.getStatus()}">value</a>
+<br/><br/>
+<a style="font-weight: bold" th:text="'Delivery Status Updates: '"></a>
+<br/>
+<a th:utext="${delivery.getFormattedStatusTracking()}"></a>
+<br/><br/>
+
+<br/><br/><br/><br/><br/><br/>
+
+
+
+<a href="/">Main page</a>
+<br/><br/>
+<a href="/logout">Exit</a>
+
+
+</body>
+</html>
+
+
+
+

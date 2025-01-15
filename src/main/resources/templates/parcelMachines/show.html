@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Parcel Machine</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('/landing_page.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 0;
+            min-height: 100vh;
+            margin-left: 8%;
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: normal;
+            color: #680001;
+            text-align: left;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            margin-top: 1%;
+
+        }
+        p {
+            color: #632a07;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+        }
+
+        a {
+            color: #3c1e08;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #A0522D;
+        }
+
+    </style>
+</head>
+<body>
+
+<br/>
+<p th:text="${machine.getAddress()}" style="font-weight: bold">value</p>
+<br/><br/>
+<a th:text="'Available boxes: '">value</a>
+<br/><br/>
+<a th:text="'Size S: ' + ${machine.getAvailableBoxesSizeS()}">value</a>
+<br/>
+<a th:text="'Size M: ' + ${machine.getAvailableBoxesSizeM()}">value</a>
+<br/>
+<a th:text="'Size L: ' + ${machine.getAvailableBoxesSizeL()}">value</a>
+<br/>
+<a th:text="'Size XL: ' + ${machine.getAvailableBoxesSizeXL()}">value</a>
+<br/>
+
+
+
+<br/>
+<br/>
+<a href="/">Main page</a>
+<br/><br/>
+<a href="/logout">Exit</a>
+
+
+</body>
+</html>
