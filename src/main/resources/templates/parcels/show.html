@@ -53,17 +53,19 @@
 <body>
 
 
-<a th:text="'Sender: ' + ${parcel.getSender()}" style="font-weight: bold">value</a>
-<a th:text="'Recipient: ' + ${parcel.getDeliveryDetails().getRecipient()}" style="font-weight: bold">value</a>
-<a th:text="'Status: ' + ${parcel.getDeliveryDetails().getStatus()}">value</a>
+<a th:text="'Sender: ' + ${parcel.getSender().getFullName()}" style="font-weight: bold">value</a>
 <br/>
-<a th:text="'Dimensions: ' + ${parcel.getLength()} + ' x ' ${parcel.getWidth()} + ' x ' ${parcel.getHeight()} + ' centimeters'">value</a>
+<a th:text="'Recipient: ' + ${parcel.getDeliveryDetails().getRecipient()}" style="font-weight: bold">value</a>
+<br/>
+<a th:text="'Current status: ' + ${parcel.getDeliveryDetails().getStatus()}">value</a>
+<br/>
+<a th:text="'Dimensions: ' + ${parcel.getLength()} + ' x ' +  ${parcel.getWidth()} + ' x ' + ${parcel.getHeight()} + ' centimeters'">value</a>
 <br/>
 <a th:text="'Weight: ' + ${parcel.getWeight()}">value</a>
 <br/>
 
 
-
+<br/><br/><br/>
 <a href="/">Main page</a>
 <br/><br/>
 <a href="/logout">Exit</a>

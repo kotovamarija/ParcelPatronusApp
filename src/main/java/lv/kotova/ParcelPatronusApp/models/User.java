@@ -142,10 +142,7 @@ public class User {
                 ", fullName='" + fullName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
                 ", createdAt=" + createdAt +
-                ", registeredParcels=" + registeredParcels +
-                ", employee=" + employee +
                 '}';
     }
 }

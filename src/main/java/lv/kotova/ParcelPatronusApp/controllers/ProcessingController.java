@@ -26,17 +26,11 @@ public class ProcessingController {
     }
 
     @GetMapping
-    public String dailyTasks(){
+    public String dailyTasks(){  // Allocating daily tasks to all team members
         return "/processing/tasks";
     }
 
-    @GetMapping("/ribaolga")
-    public String testing(){
-        System.out.println("TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG");
-        return "/processing/tasks";
-    }
-
-    @GetMapping("/showIndividualTasks") // Accessed in courier's own profile only
+    @GetMapping("/showIndividualTasks") // Each worker can access their individual tasks only through their own profile
     public String showIndividualTasks(@AuthenticationPrincipal UserDetails_ userDetails, Model model){
         model.addAttribute("user", userDetails.getUser());
         model.addAttribute("tasks", deliveryDetailsService.findByEmployee(userDetails.getUser().getEmployee()));
@@ -49,16 +43,9 @@ public class ProcessingController {
 
         // FOR WAREHOUSE MANAGERS
         model.addAttribute("tasks_UNLOADED_AT_SORTING_POINT", deliveryDetailsService.findByEmployeeIdAndStatusOrderByDispatch(userDetails.getUser().getEmployee().getId(), Status.UNLOADED_AT_SORTING_FACILITY));
-  //      model.addAttribute("tasks_ACCEPTED_AT_SORTING_POINT", deliveryDetailsService.findByEmployeeIdAndStatus(userDetails.getUser().getEmployee().getId(), Status.ACCEPTED_AT_SORTING_POINT));
 
         return "/processing/individualTasks";
     }
-
-    @GetMapping("/showAllTasks")
-    public String showAllTasks(){
-        return "/processing/allTasks";
-    }
-
 
     @GetMapping("/setPickUpTasks")
     public String setPickUpTasks(Model model){
@@ -66,11 +53,9 @@ public class ProcessingController {
         model.addAttribute("dd", deliveryDetailsService.findParcelsToPickup());
         model.addAttribute("couriers", employeeService.findCouriers());
         model.addAttribute("courier", new Employee());
-//        model.addAttribute("address", new ParcelMachine());
 
         return "/processing/setPickUpTasks";
     }
-
 
     @PostMapping("/setCourierToPickUp")
     public String setCourierToPickUp(@ModelAttribute("courier") Employee courier,
@@ -79,7 +64,6 @@ public class ProcessingController {
         return "redirect:/processing/setPickUpTasks";
     }
 
-
     @GetMapping("/setPostSortingDeliveries")
     public String setPostSortingDeliveries(Model model){
         model.addAttribute("machines", parcelMachineService.findAll());
@@ -87,9 +71,6 @@ public class ProcessingController {
         model.addAttribute("couriers", employeeService.findCouriers());
         model.addAttribute("courier", new Employee());
 
-        for(DeliveryDetails d : deliveryDetailsService.findParcelsToDeliver()) {
-            System.out.println("STATUS EXPECTED: ACCEPTED_AT_SORTING_POINT -->  ID: " + d.getId());
-        }
         return "/processing/setPostSortingDeliveries";
     }
 
@@ -100,11 +81,9 @@ public class ProcessingController {
         return "redirect:/processing/setPostSortingDeliveries";
     }
 
-
     @PostMapping("/changeStatus")
     public String changeStatus(@RequestParam("delivery_id") int deliveryId,
-                               @RequestParam("delivery_status") Status deliveryStatus,
-                                       Model model){
+                               @RequestParam("delivery_status") Status deliveryStatus){
 
         deliveryDetailsService.moveToNextStatus(deliveryId, deliveryStatus);
         return "redirect:/processing/showIndividualTasks";
@@ -112,7 +91,6 @@ public class ProcessingController {
 
     @GetMapping("/collect")
     public String collect(Model model){
-//        model.addAttribute("ddID", "");
         return "/processing/collect";
     }
 
@@ -131,13 +109,11 @@ public class ProcessingController {
         if(terminate.equals("no")) {
             deliveryDetailsService.finalizeDelivery(doorCode);
         }
-
         return "redirect:/";
     }
 
     @GetMapping("/tracking")
-    public String track(Model model){
-//        model.addAttribute("trackingNumber", "");
+    public String track(){
         return "/processing/tracking";
     }
 

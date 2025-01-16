@@ -33,7 +33,7 @@ public class OrderController {
     }
 
     @GetMapping("/newParcel")
-    public String newParcel(Model model, SessionStatus sessionStatus)
+    public String newParcel(Model model)
     {
         model.addAttribute("parcel", new Parcel());
         return "parcels/new";
@@ -103,13 +103,9 @@ public class OrderController {
                          @ModelAttribute("details") DeliveryDetails details,
                          @RequestParam(value = "terminate", required = false) String terminate, SessionStatus sessionStatus)
     {
-
-
         if(terminate.equals("yes")){
-
             parcelMachines.clear();
             sessionStatus.setComplete();
-
             return "redirect:/orderPlacement/newParcel";
         }
         User user = userDetails.getUser();

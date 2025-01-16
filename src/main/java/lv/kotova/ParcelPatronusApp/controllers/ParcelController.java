@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 public class ParcelController {
     private final ParcelService parcelService;
 
-
     public ParcelController(ParcelService parcelService) {
         this.parcelService = parcelService;
     }
@@ -30,18 +29,6 @@ public class ParcelController {
         return "parcels/show";
     }
 
-    @GetMapping("/new")
-    public String newParcel(@ModelAttribute("parcel") Parcel parcel) {
-        return "parcels/new";
-    }
-
-    @PostMapping("/registration")
-    public String create(@ModelAttribute("parcel") @Valid Parcel parcel, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "parcels/new";
-        }
-        parcelService.save(parcel);
-        return "redirect:/parcels";
-    }
+    // See OrderController for new parcel creation logic
 
 }

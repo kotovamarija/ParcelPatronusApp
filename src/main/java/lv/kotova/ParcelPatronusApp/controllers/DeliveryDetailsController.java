@@ -27,4 +27,6 @@ public class DeliveryDetailsController {
         model.addAttribute("deliveryDetails", deliveryDetailsService.findById(id));
         return "deliveryDetails/show";
     }
+
+    // See OrderController for new DeliveryDetails creation logic
 }

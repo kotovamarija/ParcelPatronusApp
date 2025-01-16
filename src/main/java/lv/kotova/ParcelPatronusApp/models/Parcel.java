@@ -166,8 +166,6 @@ public class Parcel {
                 ", height=" + height +
                 ", dimensionalWeight=" + dimensionalWeight +
                 ", size=" + size +
-                ", sender=" + sender +
-                ", deliveryDetails=" + deliveryDetails +
                 ", createdAt=" + createdAt +
                 '}';
     }
