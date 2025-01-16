@@ -1,0 +1,100 @@
+body {
+    font-family: 'Georgia', serif;
+    background-image: url('/landing_page.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0;
+    min-height: 105vh;
+    margin-left: 8%;
+}
+h1 {
+    font-size: 1.8em;
+    font-weight: normal;
+    color: #680001;
+    text-align: left;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    margin-top: 1%;
+}
+p {
+    color: #988e99;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+}
+
+a {
+    color: #8B4513;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-left: -2.2%;
+}
+
+hr.spacer {
+    border: none;
+    height: 155px;
+}
+
+.button-container {
+    margin-top: 20px;
+    transform: translateX(-3%);
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 1em;
+    color: #493729;
+    background-color: #a39664;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #680001;
+    transform: translateY(-3px);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    body {
+        margin-left: 4%;
+        background-position: 5% top;
+        background-size: auto 100%;
+    }
+
+    form {
+        top: 15%;
+        left: 5%;
+        max-width: 90%;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        margin-left: 4%;
+        background-position: 5% top;
+        background-size: auto 100%;
+    }
+
+    form {
+        top: 20%;
+        left: 5%;
+        max-width: 95%;
+    }
+}
