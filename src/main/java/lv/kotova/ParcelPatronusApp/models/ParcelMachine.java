@@ -45,12 +45,6 @@ public class ParcelMachine {
         initialize();
     }
 
-    public ParcelMachine(String address, boolean coldProtected) {
-        this.address = address;
-        this.coldProtected = coldProtected;
-        initialize();
-    }
-
     public ParcelMachine() {
         initialize();
     }
@@ -162,8 +156,6 @@ public class ParcelMachine {
                 ", availableBoxesSizeM=" + availableBoxesSizeM +
                 ", availableBoxesSizeL=" + availableBoxesSizeL +
                 ", availableBoxesSizeXL=" + availableBoxesSizeXL +
-                ", outcomingDeliveries=" + outcomingDeliveries +
-                ", incomingDeliveries=" + incomingDeliveries +
                 '}';
     }
 }

@@ -1,109 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login page</title>
-    <style>
-
-        body {
-        font-family: 'Georgia', serif;
-        background-image: url('/landing_page.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        padding: 0;
-        min-height: 105vh;
-        margin-left: 6%;
-    }
-
-    a:hover {
-        color: #A0522D;
-    }
-/*////////////////////////////////////////////*/
-/*    ////////////////////////////////////////////*/
-    form {
-        position: absolute;
-        top: 14%;
-        left: 6%;
-        max-width: 330px;
-        margin: 0 auto;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-    }
-
-    h2 {
-        text-align: center;
-        color: #333;
-    }
-
-    label {
-        font-size: 1em;
-        color: white;
-    }
-
-    input[type="text"], input[type="password"] {
-        width: 95%;
-        padding: 7px;
-        margin: 5px 0;
-        border-radius: 3px;
-        border: 1px solid #ccc;
-        font-size: 0.9em;
-    }
-
-    input[type="submit"] {
-        width: 60%;
-        padding: 12px;
-        font-size: 1.2em;
-        background-color: #866237;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    input[type="submit"]:hover {
-        background-color: #680001;
-    }
-
-    @media (max-width: 768px) {
-        body {
-            margin-left: 4%;
-            background-position: 5% top;
-            background-size: auto 100%;
-        }
-
-        form {
-            top: 15%;
-            left: 5%;
-            max-width: 90%;
-        }
-
-        input[type="text"], input[type="password"] {
-            width: 100%;
-        }
-
-        input[type="submit"] {
-            width: 100%;
-        }
-    }
-
-    @media (max-width: 480px) {
-        body {
-            margin-left: 4%;
-            background-position: 5% top;
-            background-size: auto 100%;
-        }
-
-        form {
-            top: 20%;
-            left: 5%;
-            max-width: 95%;
-        }
-    }
-    </style>
+    <link rel="stylesheet" th:href="@{/styles.css}" href="/styles.css"/>
 </head>
 <body>
 
@@ -123,6 +24,7 @@
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 <p style="font-weight: lighter; color:white" >Still don’t have an account? <a style="color: #866237" href="/registration">Register now</a> to get started!</p>
+
 
 </body>
 </html>

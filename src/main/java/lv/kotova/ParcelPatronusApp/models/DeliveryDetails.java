@@ -1,7 +1,6 @@
 package lv.kotova.ParcelPatronusApp.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lv.kotova.ParcelPatronusApp.models.enums.Status;
@@ -28,15 +27,19 @@ public class DeliveryDetails {
     @JoinColumn(name = "package_id", referencedColumnName = "id")
     private Parcel parcel;
 
-    @Column(name = "cell_ID_dispatch", columnDefinition = "int default 0")
+    @Column(name = "cell_ID_dispatch")
     private Integer cellIdDispatch = 0;
 
-    @Column(name = "cell_ID_destination", columnDefinition = "int default 0")
+    @Column(name = "cell_ID_destination")
     private Integer cellIdDestination = 0;
 
     @ManyToOne
     @JoinColumn(name = "dispatch_machine_ID", referencedColumnName = "id")
     private ParcelMachine dispatchParcelMachine;
+
+    @ManyToOne
+    @JoinColumn(name = "destination_machine_ID", referencedColumnName = "id")
+    private ParcelMachine destinationParcelMachine;
 
     @ManyToOne
     @JoinColumn(name = "courier_id", referencedColumnName = "id")
@@ -45,10 +48,6 @@ public class DeliveryDetails {
     @ManyToOne
     @JoinColumn(name = "warehouse_manager_id", referencedColumnName = "id")
     private Employee warehouseManager;
-
-    @ManyToOne
-    @JoinColumn(name = "destination_machine_ID", referencedColumnName = "id")
-    private ParcelMachine destinationParcelMachine;
 
     @Column(name = "recipient")
     @NotEmpty(message = "Enter recipient")
@@ -70,13 +69,6 @@ public class DeliveryDetails {
     private String doorCode;
 
     public DeliveryDetails() {}
-
-    public DeliveryDetails(Parcel parcel, ParcelMachine parcelMachineFrom, ParcelMachine parcelMachineTo) {
-        this.status = Status.AWAITING_PICKUP;
-        this.parcel = parcel;
-        this.dispatchParcelMachine = parcelMachineFrom;
-        this.destinationParcelMachine = parcelMachineTo;
-    }
 
     public void setTrackingNumber() {
         this.trackingNumber = "LV2025PP" + dispatchParcelMachine.getId() +
@@ -210,14 +202,10 @@ public class DeliveryDetails {
         return "DeliveryDetails{" +
                 "id=" + id +
                 ", status=" + status +
-                ", statusTracking='" + statusTracking + '\'' +
-                ", parcel=" + parcel +
                 ", cellIdDispatch=" + cellIdDispatch +
                 ", cellIdDestination=" + cellIdDestination +
-                ", dispatchParcelMachine=" + dispatchParcelMachine +
                 ", courier=" + courier +
                 ", warehouseManager=" + warehouseManager +
-                ", destinationParcelMachine=" + destinationParcelMachine +
                 ", recipient='" + recipient + '\'' +
                 ", createdAt=" + createdAt +
                 ", recipientsPhoneNumber='" + recipientsPhoneNumber + '\'' +

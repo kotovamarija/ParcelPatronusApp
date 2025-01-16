@@ -3,14 +3,12 @@ package lv.kotova.ParcelPatronusApp.services;
 import lv.kotova.ParcelPatronusApp.models.Parcel;
 import lv.kotova.ParcelPatronusApp.repositories.ParcelRepository;
 import lv.kotova.ParcelPatronusApp.util.ParcelNotFoundException;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 @Service
 @Transactional(readOnly = true)

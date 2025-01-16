@@ -32,7 +32,7 @@ public class OrderProcessingService {
         parcel.setDeliveryDetails(deliveryDetails);
         parcel.setCreatedAt(LocalDateTime.now());
 
-        deliveryDetails.setParcel(parcel); // will do smth about LAZY loading later
+        deliveryDetails.setParcel(parcel);
         deliveryDetails.setStatus(Status.AWAITING_PICKUP);
         deliveryDetails.setStatusTracking(Status.AWAITING_PICKUP);
         deliveryDetails.setDispatchParcelMachine(parcelMachineService.findByAddress(machine1));
@@ -47,10 +47,7 @@ public class OrderProcessingService {
 
         deliveryDetailsService.setCellIdDispatch(parcel);
         deliveryDetailsService.save(deliveryDetails);
-
     }
-
-
 
     public void assignBox(ParcelMachine parcelMachine, Parcel parcel) {
         changeOccupancy(parcelMachine, parcel, -1);

@@ -24,7 +24,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/landing_page.jpg", "/registration", "/login", "/error").permitAll()
+                                .requestMatchers("/static/**", "/landing_page.jpg", "/styles.css", "/registration", "/login", "/error", "/favicon.ico").permitAll()
                                 .anyRequest().hasAnyRole("ADMIN", "USER")
                 )
                 .formLogin(form -> form

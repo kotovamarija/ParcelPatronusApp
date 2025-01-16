@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name = "position")
 public class Employee {
     @Id
     @Column(name = "id")
@@ -72,8 +70,6 @@ public class Employee {
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", position='" + position + '\'' +
-                ", assignedDeliveries=" + assignedDeliveries +
-                ", user=" + user +
                 '}';
     }
 }

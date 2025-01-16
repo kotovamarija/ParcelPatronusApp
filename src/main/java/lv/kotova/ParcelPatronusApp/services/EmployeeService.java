@@ -31,7 +31,6 @@ public class EmployeeService {
         return employeeRepository.findAllEmployeesByPosition("COURIER");
     }
 
-
     public Employee findByFullName(String fullName) {
         return employeeRepository.findByFullName(fullName);
     }

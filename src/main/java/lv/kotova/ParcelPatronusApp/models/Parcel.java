@@ -16,7 +16,7 @@ public class Parcel {
     private int id;
 
     @Column(name = "weight")
-    @DecimalMax(value = "20.0", message = "Maximum accepted weight is 20 kilograms per 1 package")
+    @DecimalMax(value = "20.0", message = "Maximum accepted weight is 15 kilograms per 1 package")
     private Double weight;
 
     @Column(name = "length")
@@ -49,7 +49,7 @@ public class Parcel {
     private LocalDateTime createdAt;
 
     public Parcel() {
-        setSize(); // 13:12 07.01.2025
+        setSize();
     }
 
     public Parcel(Double weight, int length, int width, int height) {
@@ -59,7 +59,6 @@ public class Parcel {
         this.height = height;
         setSize();
     }
-
 
     public void setSize(){
         this.dimensionalWeight = (double) (this.length * this.width * this.height) / 5000;
@@ -92,12 +91,11 @@ public class Parcel {
         this.id = id;
     }
 
-    @Max(value = 15, message = "Maximum accepted weight is 15 kilograms per 1 package")
     public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(@DecimalMax(value = "20.0", message = "Maximum accepted weight is 20 kilograms per 1 package") Double weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
@@ -121,30 +119,27 @@ public class Parcel {
         this.deliveryDetails = deliveryDetails;
     }
 
-    @Max(value = 65, message = "Maximum accepted length is 65 centimeters")
     public int getLength() {
         return length;
     }
 
-    public void setLength(@Max(value = 65, message = "Maximum accepted length is 65 centimeters") int length) {
+    public void setLength(int length) {
         this.length = length;
     }
 
-    @Max(value = 40, message = "Maximum accepted width is 40 centimeters")
     public int getWidth() {
         return width;
     }
 
-    public void setWidth(@Max(value = 40, message = "Maximum accepted width is 40 centimeters") int width) {
+    public void setWidth(int width) {
         this.width = width;
     }
 
-    @Max(value = 35, message = "Maximum accepted height is 35 centimeters")
     public int getHeight() {
         return height;
     }
 
-    public void setHeight(@Max(value = 35, message = "Maximum accepted height is 35 centimeters") int height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 

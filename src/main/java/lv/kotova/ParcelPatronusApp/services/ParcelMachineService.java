@@ -1,8 +1,6 @@
 package lv.kotova.ParcelPatronusApp.services;
 
-import lv.kotova.ParcelPatronusApp.models.Parcel;
 import lv.kotova.ParcelPatronusApp.models.ParcelMachine;
-import lv.kotova.ParcelPatronusApp.models.enums.Size;
 import lv.kotova.ParcelPatronusApp.repositories.ParcelMachineRepository;
 import lv.kotova.ParcelPatronusApp.util.ParcelMachineNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
