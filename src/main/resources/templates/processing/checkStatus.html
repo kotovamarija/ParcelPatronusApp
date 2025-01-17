@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>Parcel Patronus </h1>
+<h1 style="font-size: 1.5em">Parcel Patronus </h1>
 <p>Your Trusted Partner in Parcel Delivery</p>
 <br/> <br/> <br/> <br/> <br/>
 
@@ -20,10 +20,10 @@
 <a th:text="'Recipient: ' + ${delivery.getRecipient()}">value</a>
 <br/>
 <br/>
-<a style="font-weight: bold; color:#680001" th:text="'Current status: ' + ${delivery.getStatus()}">value</a>
+<a style="font-weight: bold; color:green" th:text="'Current status: ' + ${delivery.getStatus()}">value</a>
 <br/><br/>
 <a style="font-weight: bold" th:text="'Delivery Status Updates: '"></a>
-<br/>
+<br/><br/>
 <a th:utext="${delivery.getFormattedStatusTracking()}"></a>
 <br/><br/>
 

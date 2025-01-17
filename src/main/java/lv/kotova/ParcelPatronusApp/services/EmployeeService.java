@@ -7,6 +7,7 @@ import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,9 @@ public class EmployeeService {
     }
 
     public List<Employee> findCouriers() {
-        return employeeRepository.findAllEmployeesByPosition("COURIER");
+        List<Employee> couriers = employeeRepository.findAllEmployeesByPosition("COURIER");
+        couriers.add(findById(6)); // let's include COO in the list of persons authorized to fulfill courier duties
+        return couriers;
     }
 
     public Employee findByFullName(String fullName) {
@@ -37,7 +40,7 @@ public class EmployeeService {
 
     @Transactional
     public void addTaskForEmployee(Employee employee, DeliveryDetails deliveryDetails) {
-        if(employee.getPosition().equals("COURIER")) {
+        if(employee.getPosition().equals("COURIER") || employee.getPosition().equals("COO")) {
             deliveryDetails.setCourier(employee);
         }
         if(employee.getPosition().equals("WAREHOUSE_MANAGER"))
