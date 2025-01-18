@@ -62,7 +62,7 @@ public class OrderController {
         }
         model.addAttribute("dispatchMachine", new ParcelMachine());
         model.addAttribute("machines", parcelMachineService.findAll());
-        return "/parcelMachines/selectDispatch";
+        return "parcelMachines/selectDispatch";
     }
 
     @PostMapping("/newDestinationAddress")
@@ -74,7 +74,7 @@ public class OrderController {
         parcelMachines.add(dispatchMachine);
         model.addAttribute("destinationMachine", new ParcelMachine());
         model.addAttribute("machines", parcelMachineService.findAll());
-        return "/parcelMachines/selectDestination";
+        return "parcelMachines/selectDestination";
     }
 
     @PostMapping("/confirmation")
@@ -90,11 +90,11 @@ public class OrderController {
             model.addAttribute("machines", parcelMachineService.findAll());
             parcelMachines.remove(1);
 
-            return "/parcelMachines/selectDestination";
+            return "parcelMachines/selectDestination";
         }
         model.addAttribute("user", userDetails.getUser());
         model.addAttribute("machines", parcelMachines);
-        return "/deliveryDetails/confirmation";
+        return "deliveryDetails/confirmation";
     }
 
     @PostMapping("/proceed")

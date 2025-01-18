@@ -19,13 +19,13 @@ public class ParcelMachinesController {
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("machines", parcelMachineService.findAll());
-        return "/parcelMachines/index";
+        return "parcelMachines/index";
     }
 
     @GetMapping("/{id}")
     public String show(Model model, @PathVariable("id") int id) {
         model.addAttribute("machine", parcelMachineService.findById(id));
-        return "/parcelMachines/show";
+        return "parcelMachines/show";
     }
 
     @GetMapping("/initialize")

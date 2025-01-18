@@ -27,7 +27,7 @@ public class ProcessingController {
 
     @GetMapping
     public String dailyTasks(){  // Allocating daily tasks to all team members
-        return "/processing/tasks";
+        return "processing/tasks";
     }
 
     @GetMapping("/showIndividualTasks") // Each worker can access their individual tasks only through their own profile
@@ -44,7 +44,7 @@ public class ProcessingController {
         // FOR WAREHOUSE MANAGERS
         model.addAttribute("tasks_UNLOADED_AT_SORTING_POINT", deliveryDetailsService.findByEmployeeIdAndStatusOrderByDispatch(userDetails.getUser().getEmployee().getId(), Status.UNLOADED_AT_SORTING_FACILITY));
 
-        return "/processing/individualTasks";
+        return "processing/individualTasks";
     }
 
     @GetMapping("/setPickUpTasks")
@@ -54,7 +54,7 @@ public class ProcessingController {
         model.addAttribute("couriers", employeeService.findCouriers());
         model.addAttribute("courier", new Employee());
 
-        return "/processing/setPickUpTasks";
+        return "processing/setPickUpTasks";
     }
 
     @PostMapping("/setCourierToPickUp")
@@ -71,7 +71,7 @@ public class ProcessingController {
         model.addAttribute("couriers", employeeService.findCouriers());
         model.addAttribute("courier", new Employee());
 
-        return "/processing/setPostSortingDeliveries";
+        return "processing/setPostSortingDeliveries";
     }
 
     @PostMapping("/setCourierToDeliver")
@@ -91,13 +91,13 @@ public class ProcessingController {
 
     @GetMapping("/collect")
     public String collect(Model model){
-        return "/processing/collect";
+        return "processing/collect";
     }
 
     @PostMapping("/confirm")
     public String confirm(@RequestParam("code") String doorCode, Model model){
         model.addAttribute("delivery", deliveryDetailsService.findByDoorCode(doorCode));
-        return "/processing/confirm";
+        return "processing/confirm";
     }
 
     @PostMapping("/collect")
@@ -114,14 +114,14 @@ public class ProcessingController {
 
     @GetMapping("/tracking")
     public String track(){
-        return "/processing/tracking";
+        return "processing/tracking";
     }
 
     @PostMapping("/getStatus")
     public String getStatus(@RequestParam("trackingNumber") String tracking_number, Model model){
         System.out.println(tracking_number);
         model.addAttribute("delivery", deliveryDetailsService.findByTrackingNumber(tracking_number));
-        return "/processing/checkStatus";
+        return "processing/checkStatus";
     }
 
 }

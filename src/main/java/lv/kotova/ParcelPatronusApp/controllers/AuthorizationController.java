@@ -46,7 +46,7 @@ public class AuthorizationController {
 
         userValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors())
-            return "/auth/registration";
+            return "auth/registration";
 
         userService.save(user);
         return "redirect:/login";
