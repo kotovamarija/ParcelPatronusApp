@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles_general.css"/>
+    <title>Print Tracking Number</title>
+</head>
+<body>
+
+<br/>
+<a style="font-weight: normal">Thank you! Your parcel has been securely placed in the parcel machine and is ready for shipment.</a>
+<br/>
+<a th:text="'Your Tracking Number: '"></a>
+<a style="color:dodgerblue" th:text="${tranckingNumber}"></a>
+<br/>
+<br/>
+<br/>
+
+<a style="font-weight: normal">Click below to track your shipment:</a>
+<br/>
+<a style="color: #680001" href="/processing/tracking">Track My Parcel</a>
+
+<hr class="spacer">
+<a href="/">Main page</a>
+<br/><br/>
+<a href="/logout">Exit</a>
+
+
+<br/>
+
+</body>
+</html>

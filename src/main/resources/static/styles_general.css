@@ -42,3 +42,8 @@ table, th, td {
     padding: 5px;
     text-align: center;
 }
+
+hr.spacer {
+    border: none;
+    height: 155px;
+}

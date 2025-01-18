@@ -101,7 +101,7 @@ public class OrderController {
     public String create(@AuthenticationPrincipal UserDetails_ userDetails,
                          @ModelAttribute("parcel") Parcel parcel,
                          @ModelAttribute("details") DeliveryDetails details,
-                         @RequestParam(value = "terminate", required = false) String terminate, SessionStatus sessionStatus)
+                         @RequestParam(value = "terminate", required = false) String terminate, Model model, SessionStatus sessionStatus)
     {
         if(terminate.equals("yes")){
             parcelMachines.clear();
@@ -112,8 +112,10 @@ public class OrderController {
         orderProcessingService.create(user, parcel, details, parcelMachines.get(0).getAddress(), parcelMachines.get(1).getAddress());
         parcelMachines.clear();
 
+        model.addAttribute("tranckingNumber", details.getTrackingNumber());
+
         sessionStatus.setComplete();
-        return "redirect:/";
+        return "deliveryDetails/printTracking";
     }
 
 

@@ -1,19 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles_general.css"/>
     <title>My Individual tasks</title>
+    <style>
+        body{
+            background-image: url('/indiv_tasks.jpg');
+            background-attachment: fixed;
+        }
+
+        .block-blue, .block-peach, .block-green {
+            display: inline-block;
+            background-color: #f0f8ff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .block-blue { background-color: #f0f8ff; }
+        .block-peach { background-color: #fffaf0; }
+        .block-green { background-color: #f5f5dc; }
+
+</style>
 </head>
 <body>
 <p>INDIVIDUAL TASKS</p>
-<p th:text="'Employee ID: ' + ${user.getEmployee().getId()} + ', name: ' + ${user.getEmployee().getFullName()}"></p>
+<a style="font-weight: normal; color: white" th:text="'Employee ID: ' + ${user.getEmployee().getId()}"></a>
 <br/>
+<a style="font-weight: normal; color: white" th:text="'Employee name: ' + ${user.getEmployee().getFullName()}"></a>
+
 <br/>
 <br/>
 
-<div th:if="${user.getEmployee().getPosition().contains('COURIER') or user.getEmployee().getPosition().contains('COO')}">
+<div class="block-blue" th:if="${user.getEmployee().getPosition().contains('WAREHOUSE_MANAGER') or user.getEmployee().getPosition().contains('COO')}">
+    <p style="color: darkolivegreen" > ASSIGN COURIER FOR PARCEL PICKUP </p>
+    <form action="/processing/setPickUpTasks">
+        <button type="submit" style="color:dodgerblue; font-weight: bold" >ASSIGN</button>
+    </form>
+    <br/>
+</div>
+<br/>
+
+<div class="block-peach" th:if="${user.getEmployee().getPosition().contains('COURIER') or user.getEmployee().getPosition().contains('COO')}">
 <p style="color: darkolivegreen"> COLLECT FROM DISPATCH MACHINE </p>
 <br/>
 <div th:each="t: ${tasks_ASSIGNED_TO_COURIER_TO_PICKUP}">
@@ -30,9 +60,17 @@
     <br/>
     <a style="font-weight: normal" th:text="'Cell number: '"/>
     <a style="color: #680001" th:text="${t.getCellIdDispatch()}"/>
+    <br/>
+    <br/>
 </div>
+    <br/>
+    <br/>
+</div>
+<br/>
 
-    <p style="color: darkolivegreen"> DELIVER TO THE SORTING POINT </p>
+
+    <div class="block-green" th:if="${user.getEmployee().getPosition().contains('COURIER') or user.getEmployee().getPosition().contains('COO')}">
+    <p  style="color: darkolivegreen" > DELIVER TO THE SORTING POINT </p>
     <br/>
     <div th:each="t: ${tasks_IN_TRANSIT_TO_SORTING_POINT}">
         <a th:href="@{/deliveryDetails/{id}(id=${t.getId()})}" style="color:darkred" th:text="'Delivery ID: ' + ${t.getId()}">value</a>
@@ -45,11 +83,13 @@
         <br/>
         <a style="font-weight: normal" th:text="'Address: ' + ${t.getDestinationParcelMachine().getAddress()}"/>
                 <br/>
-        <br/>
+<br/>
     </div>
+      <br/>
 </div>
+<br/>
 
-<div th:if="${user.getEmployee().getPosition().contains('WAREHOUSE_MANAGER') or user.getEmployee().getPosition().contains('COO')}">
+<div class="block-peach"  th:if="${user.getEmployee().getPosition().contains('WAREHOUSE_MANAGER') or user.getEmployee().getPosition().contains('COO')}">
     <p style="color: darkolivegreen" > ACCEPT PARCEL FROM COURIER </p>
     <br/>
     <div th:each="t: ${tasks_UNLOADED_AT_SORTING_POINT}">
@@ -66,10 +106,23 @@
         <br/>
         <br/>
     </div>
+    <br/>
+</div>
+<br/>
+
+<div class="block-blue"  th:if="${user.getEmployee().getPosition().contains('WAREHOUSE_MANAGER') or user.getEmployee().getPosition().contains('COO')}">
+    <br/>
+    <p style="color: darkolivegreen" > ASSIGN COURIER FOR POST-SORTING DELIVERY </p>
+    <form action="/processing/setPostSortingDeliveries">
+        <button type="submit" style="color:dodgerblue; font-weight: bold" >ASSIGN</button>
+    </form>
+    <br/>
+    <br/>
 </div>
 
-
-<div th:if="${user.getEmployee().getPosition().contains('COURIER') or user.getEmployee().getPosition().contains('COO')}">
+<br/>
+<div class="block-peach" th:if="${user.getEmployee().getPosition().contains('COURIER') or user.getEmployee().getPosition().contains('COO')}">
+    <br/>
             <p style="color: darkolivegreen" > COLLECT PARCELS FROM THE SORTING POINT </p>
             <br/>
             <div th:each="t: ${tasks_ASSIGNED_TO_COURIER_TO_DELIVER}">
@@ -84,8 +137,13 @@
                 <br/>
                 <a style="font-weight: normal" th:text="'Address: ' + ${t.getDestinationParcelMachine().getAddress()}"/>
             </div>
+    <br/>
+</div>
 <br/>
-                <p style="color: darkolivegreen" > UNLOAD AT THE DESTINATION PARCEL MACHINE </p>
+
+    <div class="block-green" th:if="${user.getEmployee().getPosition().contains('COURIER') or user.getEmployee().getPosition().contains('COO')}">
+    <p style="color: darkolivegreen" > UNLOAD AT THE DESTINATION PARCEL MACHINE </p>
+    <br/>
                 <div th:each="t: ${tasks_IN_TRANSIT_TO_DESTINATION}">
                     <a th:href="@{/deliveryDetails/{id}(id=${t.getId()})}" style="color:darkred" th:text="'Delivery ID: ' + ${t.getId()}">value</a>
                     <br/>
@@ -102,7 +160,6 @@
                     <a style="color: #680001" th:text="${t.getCellIdDestination()}"/>
                     <br/>
                     <br/>
-                    <br/>
                 </div>
 </div>
 
@@ -111,9 +168,9 @@
 <br/>
 
 
-<a href="/">Main page</a>
+<a style="color: white" href="/">Main page</a>
 <br/><br/>
-<a href="/logout">Exit</a>
+<a style="color: white" href="/logout">Exit</a>
 
 </body>
 </html>
