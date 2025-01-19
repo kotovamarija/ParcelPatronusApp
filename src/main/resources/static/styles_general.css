@@ -47,3 +47,8 @@ hr.spacer {
     border: none;
     height: 155px;
 }
+
+hr.spacer_small {
+    border: none;
+    height: 70px;
+}

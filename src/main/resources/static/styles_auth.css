@@ -2,11 +2,13 @@ body {
     font-family: 'Georgia', serif;
     background-image: url('landing_page.jpg');
     background-size: cover;
+    overflow: hidden;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     padding: 0;
-    min-height: 105vh;
-    margin-left: 6%;
+    min-height: 100vh;
+    margin-left: 4%;
 }
 
 a:hover {
@@ -16,7 +18,7 @@ a:hover {
 form {
     position: absolute;
     top: 14%;
-    left: 6%;
+    left: 4%;
     max-width: 330px;
     margin: 0 auto;
     padding: 10px;
@@ -31,7 +33,7 @@ h2 {
 
 label {
     font-size: 1em;
-    color: white;
+    color:beige;
 }
 
 input[type="text"], input[type="password"] {
@@ -59,38 +61,70 @@ input[type="submit"]:hover {
     background-color: #680001;
 }
 
-@media (max-width: 768px) {
+hr.spacer {
+    border: none;
+    height: 155px;
+}
+
+@media (max-width: 1100px) {
     body {
+        background-image: url('auth_page.jpg');
         margin-left: 4%;
-        background-position: 5% top;
+        background-position: top left;
         background-size: auto 100%;
+        overflow: auto;
     }
 
     form {
-        top: 15%;
+        top: 13%;
         left: 5%;
-        max-width: 90%;
+        max-width: 85%;
     }
 
     input[type="text"], input[type="password"] {
-        width: 100%;
+        width: 90%;
     }
 
     input[type="submit"] {
-        width: 100%;
+        width: 90%;
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        background-image: url('landing_page_phone.jpg');
+        margin-left: 4%;
+        background-position: top left;
+        background-size: auto 150%;
+        overflow: auto;
+    }
+
+    form {
+        top: 20%;
+        left: 5%;
+        max-width: 85%;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 90%;
+    }
+
+    input[type="submit"] {
+        width: 90%;
     }
 }
 
 @media (max-width: 480px) {
     body {
         margin-left: 4%;
-        background-position: 5% top;
+        background-position: top left;
         background-size: auto 100%;
     }
 
     form {
         top: 20%;
         left: 5%;
-        max-width: 95%;
+        max-width: 80%;
     }
 }
+

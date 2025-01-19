@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<h1 style="color:beige; font-weight: normal">PARCEL PATRONUS</h1>
+
 <form name="f" method="post" action="/process_login">
     <label for="username">Enter username: </label>
     <input type="text" name="username" id="username" />
@@ -16,15 +18,14 @@
     <input type="password" name="password" id="password" />
     <br/>
     <input type="submit" value="Login" />
-
     <div th:if="${param.error}" style="color: red">
         Invalid username or password
     </div>
+    <br/>
+    <br/>
+    <p style="font-weight: lighter; color:beige" >Still don’t have an account? <a style="color: #866237" href="/registration">Register now</a> to get started!</p>
+
 </form>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
-<p style="font-weight: lighter; color:white" >Still don’t have an account? <a style="color: #866237" href="/registration">Register now</a> to get started!</p>
-
 
 </body>
 </html>

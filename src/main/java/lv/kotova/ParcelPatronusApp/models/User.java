@@ -16,14 +16,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotEmpty(message = "Username should not be empty")
     @Size(min = 3, max = 30, message = "Username should be between 3 and 30 characters")
     @Column(name = "username")
     private String username;
 
+    @NotEmpty(message = "Password should not be empty")
     @Column(name = "password")
     private String password;
 
+    @NotEmpty(message = "Enter full name")
     @Column(name = "full_name")
     private String fullName;
 
@@ -33,6 +34,7 @@ public class User {
     private String phoneNumber;
 
     @Column(name = "email")
+    @NotEmpty(message = "Email should not be empty")
     @Email
     private String email;
 
@@ -58,11 +60,11 @@ public class User {
         this.email = email;
     }
 
-    public @NotEmpty(message = "Username should not be empty") @Size(min = 3, max = 30, message = "Username should be between 3 and 30 characters") String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(@NotEmpty(message = "Username should not be empty") @Size(min = 3, max = 30, message = "Username should be between 3 and 30 characters") String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -98,11 +100,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public @Email String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(@Email String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 

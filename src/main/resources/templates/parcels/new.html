@@ -8,32 +8,30 @@
 </head>
 <body>
 
-<h1 style="font-size: 1.7em"> PLACE NEW ORDER</h1>
+<h1 style="font-size: 1.2em"> PLACE NEW ORDER</h1>
 <br/>
 
 <form th:method="POST" th:action="@{/orderPlacement/newDetails}" th:object="${parcel}">
     <label for="weight"> Enter weight: </label>
     <input type="text" th:field="*{weight}" id="weight"/>
     <div style="color:red" th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">Weight error</div>
-    <br/>
+    <br/><br/>
     <label for="length"> Enter length: </label>
     <input type="text" th:field="*{length}" id="length"/>
     <div style="color:red" th:if="${#fields.hasErrors('length')}" th:errors="*{length}">Length error</div>
-    <br/>
+    <br/><br/>
     <label for="width"> Enter width: </label>
     <input type="text" th:field="*{width}" id="width"/>
     <div style="color:red" th:if="${#fields.hasErrors('width')}" th:errors="*{width}">Width error</div>
-    <br/>
+    <br/><br/>
     <label for="height"> Enter height: </label>
     <input type="text" th:field="*{height}" id="height"/>
     <div style="color:red" th:if="${#fields.hasErrors('height')}" th:errors="*{height}">Height error</div>
-    <br/>
-
-
+    <br/><br/>
     <input type="submit" value="Register!"/>
 </form>
 
-<br/><br/><br/><br/><br/><br/><br/><br/>
+<hr class="spacer_small">
 <a href="/">Main page</a>
 <br/><br/>
 <a href="/logout">Exit</a>
