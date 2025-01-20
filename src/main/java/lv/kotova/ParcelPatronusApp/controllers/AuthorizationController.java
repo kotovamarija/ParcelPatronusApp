@@ -33,6 +33,7 @@ public class AuthorizationController {
     @GetMapping
     public String home(@AuthenticationPrincipal UserDetails_ userDetails, Model model){
         model.addAttribute("role", userDetails.getAuthorities().toString());
+        model.addAttribute("user", userDetails.getUser());
         return "auth/home";
     }
 

@@ -33,16 +33,15 @@ public class ProcessingController {
     @GetMapping("/showIndividualTasks") // Each worker can access their individual tasks only through their own profile
     public String showIndividualTasks(@AuthenticationPrincipal UserDetails_ userDetails, Model model){
         model.addAttribute("user", userDetails.getUser());
-        model.addAttribute("tasks", deliveryDetailsService.findByEmployee(userDetails.getUser().getEmployee()));
 
         // FOR COURIERS
-        model.addAttribute("tasks_ASSIGNED_TO_COURIER_TO_PICKUP", deliveryDetailsService.findByEmployeeIdAndStatusOrderByDispatch(userDetails.getUser().getEmployee().getId(), Status.ASSIGNED_TO_COURIER_FOR_PICKUP));
-        model.addAttribute("tasks_IN_TRANSIT_TO_SORTING_POINT", deliveryDetailsService.findByEmployeeIdAndStatusOrderByDispatch(userDetails.getUser().getEmployee().getId(), Status.IN_TRANSIT_TO_SORTING_FACILITY));
-        model.addAttribute("tasks_ASSIGNED_TO_COURIER_TO_DELIVER", deliveryDetailsService.findByEmployeeIdAndStatusOrderByDestination(userDetails.getUser().getEmployee().getId(), Status.ASSIGNED_TO_COURIER_FOR_DELIVERY));
-        model.addAttribute("tasks_IN_TRANSIT_TO_DESTINATION", deliveryDetailsService.findByEmployeeIdAndStatusOrderByDestination(userDetails.getUser().getEmployee().getId(), Status.IN_TRANSIT_TO_DESTINATION));
+        model.addAttribute("tasks_ASSIGNED_TO_COURIER_TO_PICKUP", deliveryDetailsService.findByCourierIdAndStatusOrderByDispatch(userDetails.getUser().getEmployee().getId(), Status.ASSIGNED_TO_COURIER_FOR_PICKUP));
+        model.addAttribute("tasks_IN_TRANSIT_TO_SORTING_POINT", deliveryDetailsService.findByCourierIdAndStatusOrderByDispatch(userDetails.getUser().getEmployee().getId(), Status.IN_TRANSIT_TO_SORTING_FACILITY));
+        model.addAttribute("tasks_ASSIGNED_TO_COURIER_TO_DELIVER", deliveryDetailsService.findByCourierIdAndStatusOrderByDestination(userDetails.getUser().getEmployee().getId(), Status.ASSIGNED_TO_COURIER_FOR_DELIVERY));
+        model.addAttribute("tasks_IN_TRANSIT_TO_DESTINATION", deliveryDetailsService.findByCourierIdAndStatusOrderByDestination(userDetails.getUser().getEmployee().getId(), Status.IN_TRANSIT_TO_DESTINATION));
 
         // FOR WAREHOUSE MANAGERS
-        model.addAttribute("tasks_UNLOADED_AT_SORTING_POINT", deliveryDetailsService.findByEmployeeIdAndStatusOrderByDispatch(userDetails.getUser().getEmployee().getId(), Status.UNLOADED_AT_SORTING_FACILITY));
+        model.addAttribute("tasks_UNLOADED_AT_SORTING_POINT", deliveryDetailsService.findByWarehouseManagerIdAndStatusOrderByDispatch(userDetails.getUser().getEmployee().getId(), Status.UNLOADED_AT_SORTING_FACILITY));
 
         return "processing/individualTasks";
     }

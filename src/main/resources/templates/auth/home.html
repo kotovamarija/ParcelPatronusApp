@@ -23,12 +23,12 @@
 </div>
 
 <div th:if="${role.contains('ROLE_ADMIN')}" class="button-container">
-
-    <a href="/processing" class="button">ASSIGN TASKS FOR COURIERS</a>
+<div>
+    <a th:if="${user.getEmployee().getPosition().contains('WAREHOUSE_MANAGER') or user.getEmployee().getPosition().contains('COO')}"
+       href="/processing" class="button">ASSIGN TASKS FOR COURIERS</a>
     <br/>
+</div>
     <a href="/processing/showIndividualTasks" class="button" style="color:#7e5645">SHOW MY TASKS</a>
-    <br/>
-    <br/>
     <br/>
     <a href="/parcelMachines" class="button">View Parcel Machines locations</a>
     <br/>

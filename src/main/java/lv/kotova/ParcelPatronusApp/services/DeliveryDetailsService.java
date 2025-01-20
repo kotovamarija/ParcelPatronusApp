@@ -40,12 +40,16 @@ public class DeliveryDetailsService {
         return deliveryDetailsRepository.findByCourierIdOrWarehouseManagerId(employee.getId(), employee.getId());
     }
 
-    public List<DeliveryDetails> findByEmployeeIdAndStatusOrderByDispatch(int employeeId, Status status){
-        return deliveryDetailsRepository.findByStatusLikeAndCourierIdOrWarehouseManagerIdOrderByDispatchParcelMachineAsc(status, employeeId, employeeId);
+    public List<DeliveryDetails> findByCourierIdAndStatusOrderByDispatch(int courierId, Status status){
+        return deliveryDetailsRepository.findByStatusLikeAndCourierIdOrderByDispatchParcelMachineAsc(status, courierId);
     }
 
-    public List<DeliveryDetails> findByEmployeeIdAndStatusOrderByDestination(int employeeId, Status status){
-        return deliveryDetailsRepository.findByStatusLikeAndCourierIdOrWarehouseManagerIdOrderByDestinationParcelMachineAsc(status, employeeId, employeeId);
+    public List<DeliveryDetails> findByCourierIdAndStatusOrderByDestination(int courierId, Status status){
+        return deliveryDetailsRepository.findByStatusLikeAndCourierIdOrderByDestinationParcelMachineAsc(status, courierId);
+    }
+
+    public List<DeliveryDetails> findByWarehouseManagerIdAndStatusOrderByDispatch(int courierId, Status status){
+        return deliveryDetailsRepository.findByStatusLikeAndWarehouseManagerIdOrderByDispatchParcelMachineAsc(status, courierId);
     }
 
     public DeliveryDetails findById(int id){
@@ -105,8 +109,8 @@ public class DeliveryDetailsService {
                  break;
             case IN_TRANSIT_TO_SORTING_FACILITY:
                  detail.setStatus(Status.UNLOADED_AT_SORTING_FACILITY);
-                 detail.setWarehouseManager(employeeService.findById(5));
-                // SETTING RANDOM WAREHOUSE MANAGER:
+                 detail.setWarehouseManager(employeeService.findById(6));
+//                 SETTING RANDOM WAREHOUSE MANAGER:
 //                if (random.nextInt(2) == 0) {
 //                    detail.setWarehouseManager(employeeService.findById(4));
 //                } else {

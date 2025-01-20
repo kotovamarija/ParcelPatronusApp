@@ -64,7 +64,6 @@
     <br/>
 </div>
     <br/>
-    <br/>
 </div>
 <br/>
 
@@ -85,7 +84,6 @@
                 <br/>
 <br/>
     </div>
-      <br/>
 </div>
 <br/>
 
@@ -109,21 +107,17 @@
     <br/>
 </div>
 <br/>
-
 <div class="block-blue"  th:if="${user.getEmployee().getPosition().contains('WAREHOUSE_MANAGER') or user.getEmployee().getPosition().contains('COO')}">
-    <br/>
     <p style="color: darkolivegreen" > ASSIGN COURIER FOR POST-SORTING DELIVERY </p>
     <form action="/processing/setPostSortingDeliveries">
         <button type="submit" style="color:dodgerblue; font-weight: bold" >ASSIGN</button>
     </form>
     <br/>
-    <br/>
 </div>
 
 <br/>
 <div class="block-peach" th:if="${user.getEmployee().getPosition().contains('COURIER') or user.getEmployee().getPosition().contains('COO')}">
-    <br/>
-            <p style="color: darkolivegreen" > COLLECT PARCELS FROM THE SORTING POINT </p>
+        <p style="color: darkolivegreen" > COLLECT PARCELS FROM THE SORTING POINT </p>
             <br/>
             <div th:each="t: ${tasks_ASSIGNED_TO_COURIER_TO_DELIVER}">
                 <a th:href="@{/deliveryDetails/{id}(id=${t.getId()})}" style="color:darkred" th:text="'Delivery ID: ' + ${t.getId()}">value</a>

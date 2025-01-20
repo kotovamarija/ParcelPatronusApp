@@ -20,6 +20,9 @@ public class Employee {
     @OneToMany(mappedBy = "courier")
     private List<DeliveryDetails> assignedDeliveries;
 
+    @OneToMany(mappedBy = "warehouseManager")
+    private List<DeliveryDetails> assignedTaskToAcceptParcel;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
@@ -42,6 +45,14 @@ public class Employee {
 
     public void addNewTask(DeliveryDetails deliveryDetails) {
         this.assignedDeliveries.add(deliveryDetails);
+    }
+
+    public List<DeliveryDetails> getAssignedTaskToAcceptParcel() {
+        return assignedTaskToAcceptParcel;
+    }
+
+    public void setAssignedTaskToAcceptParcel(List<DeliveryDetails> assignedTaskToAcceptParcel) {
+        this.assignedTaskToAcceptParcel = assignedTaskToAcceptParcel;
     }
 
     public User getUser() {
