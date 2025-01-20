@@ -17,8 +17,12 @@
     <div style="color:red; font-size: smaller " th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</div>
     <br/>
     <label for="password"> Enter password: </label>
-    <input type="text" th:field="*{password}" id="password"/>
+    <input type="password" th:field="*{password}" id="password"/>
     <div style="color:red; font-size: smaller " th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+    <br/>
+    <label for="passwordCheck"> Confirm password: </label>
+    <input type="password" name="passwordCheck" id="passwordCheck"/>
+    <div style="color:red; font-size: smaller" th:if="${passwordError != null}" th:text="${passwordError}">Password confirmation error</div>
     <br/>
     <label for="fullName"> Enter full name: </label>
     <input type="text" th:field="*{fullName}" id="fullName"/>

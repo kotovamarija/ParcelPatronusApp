@@ -71,13 +71,37 @@ hr.spacer {
         max-width: 85%;
     }
 
-    input[type="text"], input[type="password"] {
-        width: 90%;
+    /*input[type="text"], input[type="password"] {*/
+    /*    width: 90%;*/
+    /*}*/
+
+    /*input[type="submit"] {*/
+    /*    width: 90%;*/
+    /*}*/
+}
+
+@media (max-width: 760px) {
+    body {
+        background-image: url('landing_page_phone.jpg');
+        margin-left: 4%;
+        background-position: top left;
+        background-size: auto 150%;
+        overflow: auto;
     }
 
-    input[type="submit"] {
-        width: 90%;
+    form {
+        top: 20%;
+        left: 5%;
+        max-width: 85%;
     }
+
+    /*input[type="text"], input[type="password"] {*/
+    /*    width: 90%;*/
+    /*}*/
+
+    /*input[type="submit"] {*/
+    /*    width: 90%;*/
+    /*}*/
 }
 
 @media (max-width: 480px) {

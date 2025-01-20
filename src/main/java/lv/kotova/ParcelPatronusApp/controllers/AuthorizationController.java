@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AuthorizationController {
@@ -36,15 +37,24 @@ public class AuthorizationController {
     }
 
     @GetMapping("/registration")
-    public String registrationPage(@ModelAttribute("user") User user) {
+    public String registrationPage(@ModelAttribute("user") User user, Model model) {
+        model.addAttribute("passwordCheck", "");
         return "auth/registration";
     }
 
     @PostMapping("/registration")
     public String performRegistration(@ModelAttribute("user") @Valid User user,
-                                      BindingResult bindingResult) {
+                                      BindingResult bindingResult,
+                                      @RequestParam("passwordCheck") String passwordCheck,
+                                      Model model) {
 
         userValidator.validate(user, bindingResult);
+
+        if (!user.getPassword().equals(passwordCheck)) {
+            bindingResult.rejectValue("password", "", "Passwords do not match");
+            model.addAttribute("passwordError", "Passwords do not match");
+        }
+
         if (bindingResult.hasErrors())
             return "auth/registration";
 

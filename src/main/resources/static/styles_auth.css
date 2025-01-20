@@ -78,16 +78,9 @@ hr.spacer {
     form {
         top: 13%;
         left: 5%;
-        max-width: 85%;
+        width: 45%;
     }
 
-    input[type="text"], input[type="password"] {
-        width: 90%;
-    }
-
-    input[type="submit"] {
-        width: 90%;
-    }
 }
 
 @media (max-width: 760px) {
@@ -102,16 +95,9 @@ hr.spacer {
     form {
         top: 20%;
         left: 5%;
-        max-width: 85%;
+        max-width: 45%;
     }
 
-    input[type="text"], input[type="password"] {
-        width: 90%;
-    }
-
-    input[type="submit"] {
-        width: 90%;
-    }
 }
 
 @media (max-width: 480px) {
