@@ -31,9 +31,9 @@ Alternatively, you can test the app as a client:
 - **Username**: client  
 - **Password**: client  
 
-$${\color{green}Feel free to explore the app by clicking any buttons, entering parcel information, assigning tasks to couriers, and completing courier duties.}$$
+$${\color{green}Feel}$$ $${\color{green}free}$$ $${\color{green}to}$$ $${\color{green}explore}$$ $${\color{green}the}$$ $${\color{green}app}$$ $${\color{green}by}$$ $${\color{green}clicking}$$ $${\color{green}any}$$ $${\color{green}buttons}$$, $${\color{green}entering}$$ $${\color{green}parcel}$$ $${\color{green}information}$$, $${\color{green}assigning}$$ $${\color{green}tasks}$$ $${\color{green}to}$$ $${\color{green}couriers}$$, $${\color{green}and}$$ $${\color{green}completing}$$ $${\color{green}courier}$$ $${\color{green}duties}$$.}
 
-![Login Page](main/resources/static/Login_demonstration.png)
+![Image](https://github.com/user-attachments/assets/245d2224-87ac-4b33-ba5f-2309dc9120e6)
 
 ## Testing
 
