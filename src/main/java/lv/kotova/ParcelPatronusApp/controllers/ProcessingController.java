@@ -89,7 +89,7 @@ public class ProcessingController {
     }
 
     @GetMapping("/collect")
-    public String collect(Model model){
+    public String collect(){
         return "processing/collect";
     }
 
