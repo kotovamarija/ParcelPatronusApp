@@ -33,7 +33,7 @@ Alternatively, you can test the app as a client:
 
 <span style="color: #3c6135;">  Feel free to explore the app by clicking any buttons, entering parcel information, assigning tasks to couriers, and completing courier duties. </span>
 
-![Login Page](resources/static/Login_demonstration.png)
+![Login Page](src/main/resources/static/Login_demonstration.png)
 
 ## Testing
 
