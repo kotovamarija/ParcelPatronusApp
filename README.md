@@ -21,7 +21,7 @@ The attached **DIAGRAMS.pdf** file has detailed diagrams of the application's ar
 The application is deployed via Google Cloud, connected to a Google SQL Instance, and is currently running at:  
 [https://parcelpatronus.online/]( https://parcelpatronus.online/)
 
-To explore the functionality, you can use the following credentials for full access as an administrator:  
+To explore the functionality, you can use the following credentials for full access as the Chief Operations Officer:  
 - **Username**: Patronus  
 - **Password**: patronus  
 
