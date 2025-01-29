@@ -95,7 +95,7 @@ hr.spacer {
     form {
         top: 20%;
         left: 5%;
-        max-width: 45%;
+        width: 80%;
     }
 
 }
@@ -110,7 +110,7 @@ hr.spacer {
     form {
         top: 20%;
         left: 5%;
-        max-width: 80%;
+        width: 80%;
     }
 }
 
